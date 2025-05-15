@@ -12,7 +12,7 @@ spec:
     targetRevision: HEAD
   destination:
     name: in-cluster
-    namespace: default
+    namespace: default-test-fail
   syncPolicy:
     automated:
       prune: false
