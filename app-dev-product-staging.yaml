@@ -1,5 +1,6 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
+version: 1.0.1
 metadata:
   name: app-dev-product-1
   finalizers:
