@@ -1,31 +1,21 @@
-apiVersion: argoproj.io/v1alpha1
-kind: Application
+apiVersion: apps/v1
+kind: Deployment
 metadata:
-  name: app-3
-  finalizers:
-    - resources-finalizer.argocd.argoproj.io/foreground
-  annotations:
-    codefresh.io/product: product-staging
+  name: nginx-deployment
+  labels:
+    app: nginx
 spec:
-  project: default
-  destination:
-    name: in-cluster
-    namespace: test-namespace
-  source:
-    path: .
-    repoURL: https://github.com/alina-codefresh/test-date.git
-    targetRevision: HEAD
-  syncPolicy:
-    automated:
-      prune: false
-      selfHeal: false
-      allowEmpty: false
-    syncOptions:
-      - PrunePropagationPolicy=foreground
-      - Replace=false
-      - PruneLast=false
-      - Validate=true
-      - CreateNamespace=false
-      - ApplyOutOfSyncOnly=false
-      - ServerSideApply=true
-      - RespectIgnoreDifferences=false
+  replicas: 1
+  selector:
+    matchLabels:
+      app: nginx
+  template:
+    metadata:
+      labels:
+        app: nginx
+    spec:
+      containers:
+        - name: nginx
+          image: nginx:1.14.2
+          ports:
+            - containerPort: 80
