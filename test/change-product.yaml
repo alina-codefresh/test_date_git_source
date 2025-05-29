@@ -4,6 +4,8 @@ metadata:
   name: app-test
   finalizers:
     - resources-finalizer.argocd.argoproj.io/foreground
+  labels:
+    stage: test
 spec:
   project: default
   destination:
