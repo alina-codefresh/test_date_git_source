@@ -12,7 +12,7 @@ spec:
     targetRevision: HEAD
   destination:
     name: in-cluster
-    namespace: test-namespace
+    namespace: test-namespace-pf
   syncPolicy:
     automated:
       prune: false
