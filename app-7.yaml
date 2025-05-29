@@ -4,15 +4,17 @@ metadata:
   name: app-7
   finalizers:
     - resources-finalizer.argocd.argoproj.io/foreground
+  annotations:
+    codefresh.io/product: product-production
 spec:
   project: default
+  destination:
+    name: in-cluster
+    namespace: test-namespace-pf
   source:
     path: .
     repoURL: https://github.com/alina-codefresh/test-date.git
     targetRevision: HEAD
-  destination:
-    name: in-cluster
-    namespace: test-namespace-pf
   syncPolicy:
     automated:
       prune: false
