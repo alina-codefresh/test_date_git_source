@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: app-dev-product
+  name: app-dev-product-1
   finalizers:
     - resources-finalizer.argocd.argoproj.io/foreground
 spec:
