@@ -4,15 +4,17 @@ metadata:
   name: sync-test
   finalizers:
     - resources-finalizer.argocd.argoproj.io/foreground
+  annotations:
+    codefresh.io/product: product-production
 spec:
   project: default
+  destination:
+    name: in-cluster
+    namespace: test-namespace
   source:
     path: sync-test
     repoURL: https://github.com/testcodefresh/argocd-example-apps.git
     targetRevision: test-alina
-  destination:
-    name: in-cluster
-    namespace: test-namespace
   syncPolicy:
     syncOptions:
       - PrunePropagationPolicy=foreground
