@@ -10,7 +10,7 @@ spec:
   project: default
   destination:
     name: in-cluster
-    namespace: test-namespace
+    namespace: test-namespace-2
   source:
     path: test
     repoURL: https://github.com/alina-codefresh/test_date_git_source.git
