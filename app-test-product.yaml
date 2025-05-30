@@ -1,0 +1,31 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: app-test-product
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io/foreground
+  annotations:
+    codefresh.io/product: product-staging
+spec:
+  project: default
+  destination:
+    name: in-cluster
+    namespace: test-namespace
+  source:
+    path: test
+    repoURL: https://github.com/alina-codefresh/test_date_git_source.git
+    targetRevision: HEAD
+  syncPolicy:
+    automated:
+      prune: false
+      selfHeal: false
+      allowEmpty: false
+    syncOptions:
+      - PrunePropagationPolicy=foreground
+      - Replace=false
+      - PruneLast=false
+      - Validate=true
+      - CreateNamespace=false
+      - ApplyOutOfSyncOnly=false
+      - ServerSideApply=true
+      - RespectIgnoreDifferences=false
