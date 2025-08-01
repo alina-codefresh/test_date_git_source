@@ -1,11 +1,9 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: app-test-product
+  name: app-product-flow-stage
   finalizers:
     - resources-finalizer.argocd.argoproj.io/foreground
-  annotations:
-    codefresh.io/product: product-dev
 spec:
   project: default
   destination:
