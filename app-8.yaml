@@ -4,8 +4,6 @@ metadata:
   name: app-8
   finalizers:
     - resources-finalizer.argocd.argoproj.io/foreground
-  annotations:
-    codefresh.io/product: product-production
 spec:
   project: default
   destination:
